@@ -4,17 +4,19 @@
 <meta charset="utf-8">
 <title>live tise</title>
 <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
 
-drink level: 0
+drink level: <span>0</span>
 
 
 <script type="text/javascript">
 var socket = io();
-console.log(socket);
+var drink = 0;
 socket.on('drink', function (what) {
-  console.log(what);
+  drink ++;
+  $('span').html(drink);
 });
 
 </script>
