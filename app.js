@@ -24,6 +24,7 @@ var prices = function (drinks) {
   return drinks;
 };
 
+app.use(express.static('images'));
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
