@@ -30,7 +30,7 @@ socket.on('drinks', function (drinks) {
 
 var update = function (drinks) {
   for (var i = 0; i < drinks.length; i++) {
-    $('.' + drinks[i].name).html(drinks[i].count);
+    $('.' + drinks[i].name).html(drinks[i].percent);
   }
 };
 
