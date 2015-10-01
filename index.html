@@ -29,11 +29,10 @@ socket.on('drinks', function (drinks) {
 });
 
 var update = function (drinks) {
-  $('.beer').html(drinks[0].count);
-  $('.wine').html(drinks[1].count);
-  $('.champagne').html(drinks[2].count);
-  $('.cocktail').html(drinks[3].count);
-}
+  for (var i = 0; i < drinks.length; i++) {
+    $('.' + drinks[i].name).html(drinks[i].count);
+  }
+};
 
 </script>
 
