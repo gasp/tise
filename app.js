@@ -6,10 +6,10 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var drinks = [
-  {name: 'beer', count: 0},
-  {name: 'wine', count: 0},
-  {name: 'champagne', count: 0},
-  {name: 'cocktail', count: 0}
+  {name: 'beer', count: 0, price: 5},
+  {name: 'wine', count: 0, price: 7},
+  {name: 'champagne', count: 0, price: 15},
+  {name: 'cocktail', count: 0, price: 10}
 ];
 
 var prices = function (drinks) {
@@ -33,7 +33,7 @@ app.get('/admin', function (req, res) {
 });
 
 io.on('connection', function (socket) {
-  io.sockets.emit('welcome', drinks);
+  socket.emit('drinks', drinks);
   socket.on('command', function (drink) {
     console.log(drink);
     for (var i = 0; i < drinks.length; i++) {
