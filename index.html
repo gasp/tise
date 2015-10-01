@@ -4,14 +4,20 @@
 <meta charset="utf-8">
 <title>live tise</title>
 <script src="/socket.io/socket.io.js" charset="utf-8"></script>
-<script type="text/javascript">
-  var socket = io();
-  console.log(socket);
-</script>
 </head>
 <body>
 
 drink level: 0
+
+
+<script type="text/javascript">
+var socket = io();
+console.log(socket);
+socket.on('message', function (msg) {
+  console.log(msg);
+});
+
+</script>
 
 </body>
 </html>
