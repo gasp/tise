@@ -5,18 +5,28 @@
 <title>barman app</title>
 <script src="/socket.io/socket.io.js" charset="utf-8"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<style media="screen">
+  button {
+    height: 100px;
+  }
+</style>
 </head>
 <body>
 
 admin page
 
-<button type="button" name="drink">drink</button>
-
+<div>
+  <button type="button" data-drink="beer">beer</button>
+  <button type="button" data-drink="wine">wine</button>
+  <button type="button" data-drink="champagne">champagne</button>
+  <button type="button" data-drink="cocktail">cocktail</button>
+</div>
 <script type="text/javascript">
 var socket = io();
 $(function () {
   $('button').on('click', function () {
-    socket.emit('drink', 'whiskycoca');
+    console.log($(this).data('drink'));
+    socket.emit('command', $(this).data('drink'));
   });
 })
 </script>

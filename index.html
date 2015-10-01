@@ -8,16 +8,32 @@
 </head>
 <body>
 
-drink level: <span>0</span>
+beer: <span class="beer">0</span>
+wine: <span class="wine">0</span>
+champagne: <span class="champagne">0</span>
+cocktail: <span class="cocktail">0</span>
 
 
 <script type="text/javascript">
 var socket = io();
-var drink = 0;
-socket.on('drink', function (what) {
-  drink ++;
-  $('span').html(drink);
+var drinks = [
+  {name: 'beer', count: 0},
+  {name: 'wine', count: 0},
+  {name: 'champagne', count: 0},
+  {name: 'cocktail', count: 0}
+];
+socket.on('drinks', function (drinks) {
+  drinks = drinks;
+  console.log(drinks);
+  update(drinks);
 });
+
+var update = function (drinks) {
+  $('.beer').html(drinks[0].count);
+  $('.wine').html(drinks[1].count);
+  $('.champagne').html(drinks[2].count);
+  $('.cocktail').html(drinks[3].count);
+}
 
 </script>
 
