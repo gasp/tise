@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>barman app</title>
+<script src="/socket.io/socket.io.js" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+
+admin page
+
+<button type="button" name="drink">drink</button>
+
+<script type="text/javascript">
+var socket = io();
+$(function () {
+  $('button').on('click', function () {
+    socket.emit('drink', 'whiskycoca');
+  });
+})
+</script>
+
+</body>
+</html>
