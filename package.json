@@ -1,0 +1,15 @@
+{
+  "name": "tise",
+  "version": "1.0.0",
+  "description": "real time consumption monitoring",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "student",
+    "project"
+  ],
+  "author": "gasp",
+  "license": "ISC"
+}
