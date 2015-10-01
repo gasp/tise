@@ -14,10 +14,8 @@ app.get('/admin', function (req, res) {
 });
 
 io.on('connection', function (socket) {
-  console.log('a user connected');
-  socket.emit('message', 'welcome');
   socket.on('drink', function (what) {
-    console.log('just drinked a ', what);
+      io.sockets.emit('drink', what);
   });
 });
 
