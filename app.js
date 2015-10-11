@@ -17,14 +17,13 @@ var prices = function (drinks) {
   for (var i = 0; i < drinks.length; i++) {
     total = total + drinks[i].count;
   }
-  console.log(total);
   for (var j = 0; j < drinks.length; j++) {
     drinks[j].percent = Math.floor(drinks[j].count/total*100);
   }
   return drinks;
 };
 
-app.use(express.static('images'));
+app.use(express.static('public'));
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
@@ -36,15 +35,12 @@ app.get('/admin', function (req, res) {
 io.on('connection', function (socket) {
   socket.emit('drinks', drinks);
   socket.on('command', function (drink) {
-    console.log(drink);
     for (var i = 0; i < drinks.length; i++) {
       if (drinks[i].name === drink) {
-        console.log('found drink', drink);
         drinks[i].count ++;
       }
     }
     drinks = prices(drinks);
-    console.log(drinks);
     io.sockets.emit('drinks', drinks);
   });
 });

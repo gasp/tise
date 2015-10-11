@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.drinks {
+  margin-top: 150px;
+}
+
+.drinks .drink{
+  width: 200px;
+  height: 200px;
+  float:left;
+  position: relative;
+}
+
+.drinks .drink .image {
+  z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+.drinks .drink.beer .image{
+  background-image: url(/images/beer.png);
+}
+.drinks .drink.wine .image{
+  background-image: url(/images/wine.png);
+}
+.drinks .drink.champagne .image{
+  background-image: url(/images/champagne.png);
+}
+.drinks .drink.cocktail .image{
+  background-image: url(/images/cocktail.png);
+}
+
+
+.drinks .drink .legend{
+  padding-top: 200px;
+  width: 200px;
+  text-align:center;
+  font-size: 36pt;
+}
+
+.drinks .drink .level{
+  z-index: 1;
+  background-color: #eb65d5;
+  left: 0;
+  top: 0;
+  width:200px;
+  height: 200px;
+  position: absolute;
+}
