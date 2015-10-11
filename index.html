@@ -5,19 +5,58 @@
 <title>live tise</title>
 <script src="/socket.io/socket.io.js" charset="utf-8"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="/css/index.css" charset="utf-8">
 </head>
 <body>
 
-drink level: <span>0</span>
+<div class="drinks">
+  <div class="drink beer">
+    <div class="image"></div>
+    <div class="level"></div>
+    <div class="legend">
+      <span class="price">0</span>€
+    </div>
+  </div>
+  <div class="drink wine">
+    <div class="image"></div>
+    <div class="level"></div>
+    <div class="legend">
+      <span class="price">0</span>€
+    </div>
+  </div>
+  <div class="drink champagne">
+    <div class="image"></div>
+    <div class="level"></div>
+    <div class="legend">
+      <span class="price">0</span>€
+    </div>
+  </div>
+  <div class="drink cocktail">
+    <div class="image"></div>
+    <div class="level"></div>
+    <div class="legend">
+      <span class="price">0</span>€
+    </div>
+  </div>
+</div>
 
 
 <script type="text/javascript">
 var socket = io();
-var drink = 0;
-socket.on('drink', function (what) {
-  drink ++;
-  $('span').html(drink);
+var drinks = [];
+socket.on('drinks', function (drinks) {
+  drinks = drinks;
+  console.log(drinks);
+  update(drinks);
 });
+
+var update = function (drinks) {
+  for (var i = 0; i < drinks.length; i++) {
+    var current = Math.round(drinks[i].percent * drinks[i].price * 4 / 100);
+    $('.' + drinks[i].name+' .price').html(current);
+    $('.' + drinks[i].name+' .level').css({top: 200 - drinks[i].percent*2, height: drinks[i].percent*2})
+  }
+};
 
 </script>
 
